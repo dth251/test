@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTales - Home</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0fbfc;
+            display: flex; flex-direction: column;
+        }
+
+        /* 1. Header: Điều chỉnh padding để phần Xin chào không bị dính sát mép */
+        .header {
+            background-color: #43b7b8;
+            color: white;
+            padding: 40px 10% 140px 10%; /* Tăng padding bottom để tạo không gian cho Wave */
+            position: relative;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        /* Container cho phần chữ Xin chào */
+        .welcome-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left; /* Căn trái toàn bộ nội dung chào hỏi */
+        }
+
+        .welcome-text {
+            font-size: 42px;
+            font-weight: bold;
+            color: #ff8c00;
+            margin-bottom: 10px;
+        }
+
+        .sub-text {
+            font-size: 18px;
+            opacity: 0.95;
+            line-height: 1.5;
+            max-width: 600px; /* Giới hạn chiều rộng để chữ không bị dàn trải quá dài */
+        }
+
+        /* Wave SVG chuẩn xác */
+        .wave-container {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            line-height: 0;
+        }
+        .wave-container svg { height: 100px; width: 100%; }
+        .shape-fill { fill: #f0fbfc; }
+
+        /* 2. Main Content: Căn giữa các Card lớp học */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 10%;
+            margin-top: -80px; /* Đẩy card đè lên dải lượn sóng */
+            position: relative;
+            z-index: 10;
+        }
+
+        .cards-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            padding: 45px 25px;
+            border-radius: 30px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+            transition: 0.3s ease;
+        }
+        .card:hover { transform: translateY(-10px); }
+
+        .icon-box {
+            width: 70px; height: 70px; border-radius: 50%;
+            margin: 0 auto 25px; display: flex;
+            align-items: center; justify-content: center; font-size: 28px;
+        }
+        .ic-1 { background: #e8f0fe; } .ic-2 { background: #e6fffa; } .ic-3 { background: #ebf8ff; }
+
+        .logout-btn {
+            background: white; color: #43b7b8; border: none;
+            padding: 8px 25px; border-radius: 20px;
+            font-weight: bold; cursor: pointer;
+        }
+
+        /* 3. Footer */
+        .footer {
+            background-color: #43b7b8;
+            color: white;
+            padding: 40px 10%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="nav">
+        <div style="font-weight: bold; font-size: 20px;">🍃 EcoTales</div>
+        <button class="logout-btn" onclick="handleLogout()">Log out</button>
+    </div>
+
+    <div class="welcome-container">
+        <h1 class="welcome-text">Xin chào <span id="user-display">thangdeptrai</span></h1>
+        <p class="sub-text">Cùng khám phá kho tàng kiến thức bất tận cùng bộ tài liệu độc quyền với EcoTales nhé!</p>
+    </div>
+
+    <div class="wave-container">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.21,101.44,124.07,106.33,184.77,95.8,243,85.67,270.39,64.42,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="cards-grid">
+        <div class="card">
+            <div class="icon-box ic-1">📖</div>
+            <h3 style="margin-bottom: 10px;">Giới thiệu</h3>
+            <p style="color: #777; font-size: 15px;">Tổng quan về các hệ thống và khóa học cần biết</p>
+        </div>
+        <div class="card">
+            <div class="icon-box ic-2">👥</div>
+            <h3 style="margin-bottom: 10px;">Lớp 4</h3>
+            <p style="color: #777; font-size: 15px;">Hệ thống kiến thức tiếng Việt lớp 4</p>
+        </div>
+        <div class="card">
+            <div class="icon-box ic-3">📚</div>
+            <h3 style="margin-bottom: 10px;">Lớp 5</h3>
+            <p style="color: #777; font-size: 15px;">Hệ thống kiến thức tiếng Việt lớp 5</p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>📞 Liên hệ: 0797555888</p>
+    <p>📍 Địa chỉ: Meow billiard số 1 Đa Sỹ, Hà Đông, Hà Nội</p>
+</div>
+
+<script>
+    // Xử lý hiển thị tên
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+    if (name) document.getElementById('user-display').innerText = name;
+
+    // Xử lý logout
+    function handleLogout() {
+        window.location.href = '/login';
+    }
+</script>
+</body>
+</html>
